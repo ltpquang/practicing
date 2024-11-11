@@ -1,4 +1,4 @@
-package practicing
+package kotlin
 
 /**
  * Created by Quang Le on 4/3/18.
@@ -22,7 +22,7 @@ package practicing
  * Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.
  */
 
-class Solution {
+class SolutionMinimumTotal {
   fun minimumTotal(triangle: List<List<Int>>): Int {
     /**
      * The minimum total of path leading to position j in row i

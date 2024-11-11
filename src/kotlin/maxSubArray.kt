@@ -1,4 +1,4 @@
-package dynamicprogramming
+package kotlin
 
 /**
  * Created by Quang Le on 5/6/18.

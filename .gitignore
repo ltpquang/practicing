@@ -2,3 +2,7 @@
 /.idea/
 /practicing.iml
 /lib/
+/.idea/
+/.gradle/
+gradle
+**/.DS_Store
