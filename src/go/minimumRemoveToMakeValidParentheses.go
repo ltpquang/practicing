@@ -1,4 +1,4 @@
-package src
+package _go
 
 import (
 	"fmt"
@@ -46,8 +46,7 @@ Constraints:
 
 1 <= s.length <= 10^5
 s[i] is one of  '(' , ')' and lowercase English letters.
- */
-
+*/
 
 func minRemoveToMakeValid(s string) string {
 	if len(s) == 0 {

@@ -1,4 +1,4 @@
-package kotlin.longestCommonPrefix
+package kt.longestCommonPrefix
 
 /**
  * You are given two arrays with positive integers arr1 and arr2.

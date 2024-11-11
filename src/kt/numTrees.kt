@@ -1,6 +1,4 @@
-package kotlin
-
-import kotlin.longestCommonPrefix.TreeNode
+package kt
 
 /**
  * Created by Quang Le on 3/30/18.
@@ -66,7 +64,7 @@ class SolutionNumTrees {
   class TreeNodeCreator {
     companion object {
       fun create(value: Int, left: TreeNode? = null, right: TreeNode? = null): TreeNode {
-        val result = kotlin.longestCommonPrefix.TreeNode(value)
+        val result = TreeNode(value)
         result.left = left
         result.right = right
         return result
