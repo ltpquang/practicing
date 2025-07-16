@@ -26,27 +26,48 @@ package kt.shortestSubarrayToBeRemoved
 //Output: 0
 //Explanation: The array is already non-decreasing. We do not need to remove any elements.
 //
-class Solution1574 {
+class Solution1574(private var input: IntArray = IntArray(0), private var cache: MutableMap<String, Int> = mutableMapOf()) {
     fun findLengthOfShortestSubarray(arr: IntArray): Int {
-        return findSubarraySize(-1, arr, Int.MAX_VALUE)
-    }
-
-    private fun findSubarraySize(valueBefore: Int, arr: IntArray, valueAfter: Int): Int {
-        if (arr.isEmpty()) {
+        input = arr
+        if (input.notDecrease(0, input.size - 1)) {
             return 0
         }
-        var resultIfRemoveTheLeft = when (arr.first() in valueBefore..valueAfter) {
-            true -> findSubarraySize(arr.first(), arr.sliceArray(1..<arr.size), valueAfter)
-            else -> arr.size
+        return findSubarraySize(-1, 0, input.size - 1, Int.MAX_VALUE)
+    }
+
+    private fun findSubarraySize(valueBefore: Int, i: Int, j: Int, valueAfter: Int): Int {
+        val cacheKey = genKey(valueBefore, i, j, valueAfter)
+        if (i > j) {
+            cache[cacheKey] = 0
+            return 0
         }
-        var resultIfRemoveTheRight = when (arr.last() in valueBefore..valueAfter) {
-            true -> findSubarraySize(valueBefore, arr.sliceArray(0..arr.size-2), arr.last())
-            else -> arr.size
+        var resultIfRemoveTheLeft = when (input[i] in valueBefore..valueAfter) {
+            true -> findSubarraySize(input[i], i + 1, j, valueAfter)
+            else -> j - i + 1
         }
-        return if (resultIfRemoveTheLeft <= resultIfRemoveTheRight) {
+        var resultIfRemoveTheRight = when (input[j] in valueBefore..valueAfter) {
+            true -> findSubarraySize(valueBefore, i, j - 1, input[j])
+            else -> j - i + 1
+        }
+        val result = if (resultIfRemoveTheLeft <= resultIfRemoveTheRight) {
             resultIfRemoveTheLeft
         } else {
             resultIfRemoveTheRight
         }
+        cache[cacheKey] = result
+        return result
+    }
+
+    private fun genKey(valueBefore: Int, i: Int, j: Int, valueAfter: Int): String {
+       return "${valueBefore}_${i}_${j}_${valueAfter}"
+    }
+
+    private fun IntArray.notDecrease(fromIndex: Int, toIndex: Int): Boolean {
+        for (i in fromIndex..<toIndex) {
+            if (this[i] > this[i + 1]) {
+                return false
+            }
+        }
+        return true
     }
 }

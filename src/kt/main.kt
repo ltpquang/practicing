@@ -9,6 +9,6 @@ import kt.shortestSubarrayToBeRemoved.Solution1574
  * --Henry Ford--
  */
 fun main() {
-//  println(SolutionMaxSubArray().maxSubArray(intArrayOf(-2,-1,-3,-4,-1,-2,-1,-5,-4)))
-  println(Solution1574().findLengthOfShortestSubarray(intArrayOf(1,2,3,10,4,2,3,5)))
+//  println(Solution1574().findLengthOfShortestSubarray(intArrayOf(1,2,3,10,4,2,3,5)))
+  println(Solution1574().findLengthOfShortestSubarray(intArrayOf(2,1)))
 }
